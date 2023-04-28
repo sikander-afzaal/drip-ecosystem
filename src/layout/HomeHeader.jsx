@@ -71,7 +71,10 @@ const HomeHeader = () => {
         <button className="xl:block hidden shadow-blueShadow bg-button rounded-full h-[36px] w-[40%]  text-white font-bold ">
           Connect Wallet
         </button>
-        <button className="text-neutral" onClick={() => setHeaderToggle(true)}>
+        <button
+          className="text-neutral 2xl:hidden block"
+          onClick={() => setHeaderToggle(true)}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
