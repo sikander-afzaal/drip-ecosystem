@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 const HomeHeader = () => {
-  const [headerToggle, setHeaderToggle] = useState(true);
+  const [headerToggle, setHeaderToggle] = useState(false);
   return (
     <header className="flex justify-center items-stretch w-full px-6 mt-6">
       {headerToggle && (
@@ -10,6 +10,7 @@ const HomeHeader = () => {
           className="cursor-pointer bg-black bg-opacity-60 w-full h-full z-[88] fixed top-0 left-0 2xl:hidden block"
         ></div>
       )}
+      {/* //header first part -------------- */}
       <div className="rounded-tl-[20px] rounded-bl-[20px] backdrop-[28px] flex justify-between items-center w-full 2xl:w-[55%] bg-white bg-opacity-50 xl:rounded-[20px] p-4 2xl:p-6">
         <img
           src="/logo.png"
@@ -34,6 +35,7 @@ const HomeHeader = () => {
           </a>
         </nav>
       </div>
+      {/* //header middle part (blue one) -------------------- */}
       <div className="hidden 2xl:flex justify-between items-center w-[17%] rounded-[20px] bg-button p-4 2xl:p-6">
         <div className="flex justify-start items-center gap-2">
           <img src="/drip-ico.png" className="w-[44px] object-contain" alt="" />
@@ -44,6 +46,7 @@ const HomeHeader = () => {
           <img src="/settings.png" className="object-contain w-[36px]" alt="" />
         </div>
       </div>
+      {/* //header end with connect wallet btn -------------------------- */}
       <div className="backdrop-[28px] flex justify-between items-center 2xl:min-w-0 xl:min-w-[500px] xl:w-[28%] bg-white bg-opacity-50 rounded-tr-[20px] rounded-br-[20px] xl:rounded-[20px] pr-4 xl:p-4 2xl:p-6 gap-6">
         <div className="relative w-[60%]">
           <button className="hidden xl:flex pr-4 justify-between items-center w-full gap-2 bg-primary rounded-full h-[36px]">
@@ -85,12 +88,16 @@ const HomeHeader = () => {
           </svg>
         </button>
       </div>
+      {/* //mobile header ---------------------------- */}
       <div
         className={`2xl:hidden flex justify-start items-start flex-col gap-5 pt-[6rem] pb-[3rem] px-5 sm:px-[2rem] w-full sm:max-w-[450px] bg-white border-l-4 z-[91] transition-all duration-700 border-solid border-button fixed top-0 ${
           headerToggle ? "right-0" : "-right-full"
         } h-full`}
       >
-        <button className="absolute top-4 left-4 text-neutral">
+        <button
+          onClick={() => setHeaderToggle(false)}
+          className="absolute top-4 left-4 text-neutral"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -107,19 +114,39 @@ const HomeHeader = () => {
           </svg>
         </button>
         <nav className="flex md:hidden justify-start flex-col mb-3 items-center w-full sm:items-start gap-5">
-          <a href="#" className="text-neutral text-lg font-bold">
+          <a
+            href="#"
+            onClick={() => setHeaderToggle(false)}
+            className="text-neutral text-lg font-bold"
+          >
             Trade
           </a>
-          <a href="#" className="text-neutral text-lg font-bold">
+          <a
+            href="#"
+            onClick={() => setHeaderToggle(false)}
+            className="text-neutral text-lg font-bold"
+          >
             Earn
           </a>
-          <a href="#" className="text-neutral text-lg font-bold">
+          <a
+            href="#"
+            onClick={() => setHeaderToggle(false)}
+            className="text-neutral text-lg font-bold"
+          >
             Win
           </a>
-          <a href="#" className="text-neutral text-lg font-bold">
+          <a
+            href="#"
+            onClick={() => setHeaderToggle(false)}
+            className="text-neutral text-lg font-bold"
+          >
             NFT
           </a>
-          <a href="#" className="text-neutral text-lg font-bold">
+          <a
+            href="#"
+            onClick={() => setHeaderToggle(false)}
+            className="text-neutral text-lg font-bold"
+          >
             Other
           </a>
         </nav>
