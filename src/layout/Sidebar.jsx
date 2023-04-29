@@ -1,10 +1,34 @@
+import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
-const Sidebar = () => {
+const Sidebar = ({ headerToggle, setHeaderToggle }) => {
   return (
-    <div className="sticky max-h-max wrapper bg-white rounded-[40px] bg-opacity-50 backdrop-blur-[28px] p-[32px]">
+    <div
+      className={`fixed z-[90] ${
+        headerToggle ? "left-0" : "-left-full"
+      } lg:sticky top-0 lg:h-auto h-full lg:top-[20px] wrapper bg-white rounded-[40px] bg-opacity-50 backdrop-blur-[28px] px-5 py-[32px] overflow-y-auto lg:p-[32px] transition-all duration-700`}
+    >
+      <button
+        onClick={() => setHeaderToggle(false)}
+        className="text-neutral absolute top-4 right-4"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          strokeWidth={1.5}
+          stroke="currentColor"
+          className="w-7 h-7"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M6 18L18 6M6 6l12 12"
+          />
+        </svg>
+      </button>
       <img src="/logo.png" className="w-full max-w-[293px]" alt="" />
-      <div className="mt-6 flex justify-start items-start gap-1 flex-col w-full">
+      <div className="mt-6 sm:mb-0 mb-10 flex justify-start items-start gap-1 flex-col w-full">
         <SidebarLink name="Home" url="/dapp" ico="/home.png" />
         <SidebarLink
           name="Exchange"
@@ -29,7 +53,7 @@ const Sidebar = () => {
         <SidebarLink name="DripREF" url="/dapp/ref" ico="/user.png" />
         <SidebarLink name="More" url="/dapp/more" ico="/grid.png" />
       </div>
-      <div className="mt-20 w-full flex justify-start items-start flex-col gap-2">
+      <div className="mt-auto lg:mt-20 w-full flex justify-start items-start flex-col gap-2">
         <div className="flex justify-between items-center w-full">
           <img src="/gecko.png" className="w-6 object-contain" alt="" />
           <div className="flex justify-center items-center gap-5">

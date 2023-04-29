@@ -22,6 +22,9 @@ export default {
         blueShadow: "0px 4px 12px rgba(105, 183, 225, 0.5)",
         blueShadowLight: "0px 4px 12px rgba(105, 183, 225, 0.2)",
       },
+      screens: {
+        "1.5xl": "1670px",
+      },
     },
   },
   plugins: [],
