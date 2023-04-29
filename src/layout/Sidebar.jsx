@@ -10,7 +10,7 @@ const Sidebar = ({ headerToggle, setHeaderToggle }) => {
     >
       <button
         onClick={() => setHeaderToggle(false)}
-        className="text-neutral absolute top-4 right-4"
+        className="text-neutral absolute top-4 right-4 lg:hidden block"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -32,8 +32,18 @@ const Sidebar = ({ headerToggle, setHeaderToggle }) => {
         <SidebarLink name="Home" url="/dapp" ico="/home.png" />
         <SidebarLink
           name="Exchange"
-          url="/dapp/exchange"
+          url="/dapp/exchange/swap"
           ico="/left-and-right-arrows.png"
+          options={[
+            {
+              url: "/dapp/exchange/swap",
+              name: "Swap",
+            },
+            {
+              url: "/dapp/exchange/liquidity",
+              name: "Liquidity",
+            },
+          ]}
         />
         <SidebarLink
           name="DripFARM"
@@ -48,6 +58,16 @@ const Sidebar = ({ headerToggle, setHeaderToggle }) => {
         <SidebarLink
           name="DripSTORE"
           url="/dapp/store"
+          options={[
+            {
+              url: "/dapp/store/nft",
+              name: "NFT Store",
+            },
+            {
+              url: "/dapp/store/wallet",
+              name: "My Wallet",
+            },
+          ]}
           ico="/shopping-cart.png"
         />
         <SidebarLink name="DripREF" url="/dapp/ref" ico="/user.png" />
@@ -78,26 +98,59 @@ const Sidebar = ({ headerToggle, setHeaderToggle }) => {
 
 export default Sidebar;
 
-const SidebarLink = ({ name, ico, url }) => {
+const SidebarLink = ({ name, ico, url, options }) => {
   const { pathname } = useLocation();
   return (
-    <Link
-      to={url}
-      className={`${
-        pathname === url ? "bg-primary" : "bg-transparent"
-      } relative flex justify-start items-center gap-4 w-full px-4 py-3 transition-all duration-300 hover:bg-primary rounded-2xl`}
-    >
-      <img src={ico} alt="" className="w-6 object-contain" />
-      <p
+    <div className="flex w-full justify-start items-start flex-col">
+      <Link
+        to={url}
         className={`${
-          pathname === url ? "text-[#5DB2E0]" : "text-neutral"
-        } text-lg hover:text-[#5db2e0] transition-all duration-300`}
+          pathname.split("/")[2] === url.split("/")[2]
+            ? "bg-primary"
+            : "bg-transparent"
+        } relative flex justify-start items-center gap-4 w-full px-4 py-3 transition-all duration-300 hover:bg-primary rounded-2xl`}
       >
-        {name}
-      </p>
-      {pathname === url && (
-        <span className="bg-[#5db2e0] w-[3px] absolute right-4 top-1/2 -translate-y-1/2 h-[55%]"></span>
+        <img src={ico} alt="" className="w-6 object-contain" />
+        <p
+          className={`${
+            pathname.split("/")[2] === url.split("/")[2]
+              ? "text-[#5DB2E0]"
+              : "text-neutral"
+          } text-lg hover:text-[#5db2e0] transition-all duration-300`}
+        >
+          {name}
+        </p>
+        {pathname.split("/")[2] === url.split("/")[2] && (
+          <span className="bg-[#5db2e0] w-[3px] absolute right-4 top-1/2 -translate-y-1/2 h-[55%]"></span>
+        )}
+      </Link>
+      {pathname.split("/")[2] === url.split("/")[2] && options && (
+        <div className="flex w-full justify-start items-start flex-col">
+          {options.map((elem, idx) => {
+            return (
+              <Link
+                key={idx + elem.name}
+                to={elem.url}
+                className={` relative flex justify-start items-center gap-4 w-full px-4 py-3`}
+              >
+                {" "}
+                <p
+                  className={`${
+                    pathname.includes(elem.url)
+                      ? "text-[#5DB2E0]"
+                      : "text-neutral"
+                  } text-lg hover:text-[#5db2e0] transition-all duration-300`}
+                >
+                  {elem.name}
+                </p>
+                {pathname.includes(elem.url) && (
+                  <span className="bg-[#5db2e0] w-[3px] absolute right-4 top-1/2 -translate-y-1/2 h-[55%]"></span>
+                )}
+              </Link>
+            );
+          })}
+        </div>
       )}
-    </Link>
+    </div>
   );
 };

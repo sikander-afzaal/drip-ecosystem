@@ -9,6 +9,7 @@ export default {
       },
       backgroundImage: {
         body: "url('/body-bg.png')",
+        bannerGr: "linear-gradient(90deg, #5DB2E0 0%, #7EC4CF 100%)",
       },
       colors: {
         primary: "#E5F0FF",
