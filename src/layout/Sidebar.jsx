@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
 const Sidebar = ({ headerToggle, setHeaderToggle }) => {
@@ -32,7 +31,7 @@ const Sidebar = ({ headerToggle, setHeaderToggle }) => {
         <SidebarLink
           setSidebar={setHeaderToggle}
           name="Home"
-          url="/dapp"
+          url="/dapp/"
           ico="/home.png"
         />
 
@@ -119,57 +118,70 @@ const Sidebar = ({ headerToggle, setHeaderToggle }) => {
 
 export default Sidebar;
 
-const SidebarLink = ({ name, ico, url, options, setHeaderToggle }) => {
+const SidebarLink = ({ name, ico, url, options, setSidebar }) => {
   const { pathname } = useLocation();
   return (
     <div className="flex w-full justify-start items-start flex-col">
-      <Link
-        onClick={() => setHeaderToggle(false)}
-        to={url}
-        className={`${
-          pathname.split("/")[2] === url.split("/")[2]
-            ? "bg-primary"
-            : "bg-transparent"
-        } relative flex justify-start items-center gap-4 w-full px-4 py-3 transition-all duration-300 hover:bg-primary rounded-2xl`}
+      <div
+        onClick={() => {
+          if (!options) {
+            setSidebar(false);
+          }
+        }}
+        className="w-full"
       >
-        <img src={ico} alt="" className="w-6 object-contain" />
-        <p
+        <Link
+          to={url}
           className={`${
             pathname.split("/")[2] === url.split("/")[2]
-              ? "text-[#5DB2E0]"
-              : "text-neutral"
-          } text-lg hover:text-[#5db2e0] transition-all duration-300`}
+              ? "bg-primary"
+              : "bg-transparent"
+          } relative flex justify-start items-center gap-4 w-full px-4 py-3 transition-all duration-300 hover:bg-primary rounded-2xl`}
         >
-          {name}
-        </p>
-        {pathname.split("/")[2] === url.split("/")[2] && (
-          <span className="bg-[#5db2e0] w-[3px] absolute right-4 top-1/2 -translate-y-1/2 h-[55%]"></span>
-        )}
-      </Link>
+          <img src={ico} alt="" className="w-6 object-contain" />
+          <p
+            className={`${
+              pathname.split("/")[2] === url.split("/")[2]
+                ? "text-[#5DB2E0]"
+                : "text-neutral"
+            } text-lg hover:text-[#5db2e0] transition-all duration-300`}
+          >
+            {name}
+          </p>
+          {pathname.split("/")[2] === url.split("/")[2] && (
+            <span className="bg-[#5db2e0] w-[3px] absolute right-4 top-1/2 -translate-y-1/2 h-[55%]"></span>
+          )}
+        </Link>
+      </div>
+
       {pathname.split("/")[2] === url.split("/")[2] && options && (
         <div className="flex w-full justify-start items-start flex-col">
           {options.map((elem, idx) => {
             return (
-              <Link
-                onClick={() => setHeaderToggle(false)}
+              <div
+                onClick={() => setSidebar(false)}
                 key={idx + elem.name}
-                to={elem.url}
-                className={` relative flex justify-start items-center gap-4 w-full px-4 py-3`}
+                className="w-full"
               >
-                {" "}
-                <p
-                  className={`${
-                    pathname.includes(elem.url)
-                      ? "text-[#5DB2E0]"
-                      : "text-neutral"
-                  } text-lg hover:text-[#5db2e0] transition-all duration-300`}
+                <Link
+                  to={elem.url}
+                  className={` relative flex justify-start items-center gap-4 w-full px-4 py-3`}
                 >
-                  {elem.name}
-                </p>
-                {pathname.includes(elem.url) && (
-                  <span className="bg-[#5db2e0] w-[3px] absolute right-4 top-1/2 -translate-y-1/2 h-[55%]"></span>
-                )}
-              </Link>
+                  {" "}
+                  <p
+                    className={`${
+                      pathname.includes(elem.url)
+                        ? "text-[#5DB2E0]"
+                        : "text-neutral"
+                    } text-lg hover:text-[#5db2e0] transition-all duration-300`}
+                  >
+                    {elem.name}
+                  </p>
+                  {pathname.includes(elem.url) && (
+                    <span className="bg-[#5db2e0] w-[3px] absolute right-4 top-1/2 -translate-y-1/2 h-[55%]"></span>
+                  )}
+                </Link>
+              </div>
             );
           })}
         </div>
