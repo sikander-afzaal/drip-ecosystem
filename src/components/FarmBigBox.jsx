@@ -1,9 +1,15 @@
 import { useState } from "react";
 
-const FarmBigBox = () => {
+const FarmBigBox = ({ locked }) => {
   const [detailsShown, setDetailsShown] = useState(false);
   return (
     <div className="w-full flex flex-col justify-start items-start overflow-hidden bg-white bg-opacity-50 backdrop-blur-[28px] rounded-[20px]">
+      {locked && (
+        <div className="flex justify-center items-center gap-2 w-full py-2 px-4 bg-[#9CADCE]">
+          <img src="/lock-gray.png" className="w-6 object-contain " alt="" />
+          <p className="text-white font-bold">70% rewards locked</p>
+        </div>
+      )}
       <div className="flex justify-between border-b border-solid border-primary py-4 px-8 items-center gap-2 w-full">
         <div className="flex justify-start items-start flex-col ">
           <p className="text-lg font-bold text-neutral">DRIP-USDT</p>

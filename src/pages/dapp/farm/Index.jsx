@@ -33,8 +33,8 @@ const Farm = () => {
         <div className="grid grid-cols-1 xl:grid-cols-2 items-start gap-5 w-full mt-8">
           <FarmBigBox />
           <FarmBigBox />
-          <FarmBigBox />
-          <FarmBigBox />
+          <FarmBigBox locked={true} />
+          <FarmBigBox locked={true} />
           <FarmBigBox />
           <FarmBigBox />
         </div>
