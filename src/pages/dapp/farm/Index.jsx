@@ -1,5 +1,6 @@
 import Banner from "./Banner";
 import FilterBar from "./FilterBar";
+import FarmBigBox from "../../../components/FarmBigBox";
 
 const Farm = () => {
   return (
@@ -29,6 +30,14 @@ const Farm = () => {
           </button>
         </div>
         <FilterBar />
+        <div className="grid grid-cols-1 xl:grid-cols-2 items-start gap-5 w-full mt-8">
+          <FarmBigBox />
+          <FarmBigBox />
+          <FarmBigBox />
+          <FarmBigBox />
+          <FarmBigBox />
+          <FarmBigBox />
+        </div>
       </div>
     </>
   );

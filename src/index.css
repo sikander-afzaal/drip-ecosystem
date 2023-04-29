@@ -14,6 +14,9 @@
   .cta-btn {
     @apply leading-[1] px-[32px] py-3  shadow-blueShadow text-white text-lg font-bold hover:bg-transparent hover:text-button border-2 border-solid border-button transition-all duration-300 rounded-2xl bg-button;
   }
+  .invert-cta {
+    @apply leading-[1] px-[32px] py-3  hover:shadow-blueShadow text-button text-lg font-bold hover:bg-button hover:text-white border-2 border-solid border-button transition-all duration-300 rounded-2xl bg-transparent;
+  }
 }
 select {
   -webkit-appearance: none;

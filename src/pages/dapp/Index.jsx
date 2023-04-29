@@ -26,7 +26,7 @@ const Dapp = () => {
         </svg>
       </button>
       <Sidebar headerToggle={headerToggle} setHeaderToggle={setHeaderToggle} />
-      <div className="w-full">
+      <div className="w-full pb-8">
         <Outlet />
       </div>
     </div>
