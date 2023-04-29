@@ -1,10 +1,11 @@
 import Banner from "./Banner";
+import FilterBar from "./FilterBar";
 
 const Farm = () => {
   return (
     <>
       <Banner />
-      <div className="w-full max-w-[1020px] flex justify-start items-start flex-col">
+      <div className="w-full max-w-[1020px] flex justify-start items-start mx-auto flex-col">
         <div className="p-5 sm:p-[32px] sm:flex-row flex-col my-6 sm:w-auto w-full rounded-[40px] bg-bannerGr flex justify-center text-center sm:text-left items-center gap-8">
           <img
             src="/drip-symbol.png"
@@ -27,6 +28,7 @@ const Farm = () => {
             Harvest
           </button>
         </div>
+        <FilterBar />
       </div>
     </>
   );
