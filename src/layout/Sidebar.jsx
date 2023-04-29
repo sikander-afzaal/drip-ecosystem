@@ -29,11 +29,18 @@ const Sidebar = ({ headerToggle, setHeaderToggle }) => {
       </button>
       <img src="/logo.png" className="w-full max-w-[293px]" alt="" />
       <div className="mt-6 sm:mb-0 mb-10 flex justify-start items-start gap-1 flex-col w-full">
-        <SidebarLink name="Home" url="/dapp" ico="/home.png" />
+        <SidebarLink
+          setSidebar={setHeaderToggle}
+          name="Home"
+          url="/dapp"
+          ico="/home.png"
+        />
+
         <SidebarLink
           name="Exchange"
           url="/dapp/exchange/swap"
           ico="/left-and-right-arrows.png"
+          setSidebar={setHeaderToggle}
           options={[
             {
               url: "/dapp/exchange/swap",
@@ -49,11 +56,13 @@ const Sidebar = ({ headerToggle, setHeaderToggle }) => {
           name="DripFARM"
           url="/dapp/farm"
           ico="/direction-sign.png"
+          setSidebar={setHeaderToggle}
         />
         <SidebarLink
           name="DripLAUNCH"
           url="/dapp/launch"
           ico="/rocket-launch.png"
+          setSidebar={setHeaderToggle}
         />
         <SidebarLink
           name="DripSTORE"
@@ -69,9 +78,21 @@ const Sidebar = ({ headerToggle, setHeaderToggle }) => {
             },
           ]}
           ico="/shopping-cart.png"
+          setSidebar={setHeaderToggle}
         />
-        <SidebarLink name="DripREF" url="/dapp/ref" ico="/user.png" />
-        <SidebarLink name="More" url="/dapp/more" ico="/grid.png" />
+        <SidebarLink
+          setSidebar={setHeaderToggle}
+          name="DripREF"
+          url="/dapp/ref"
+          ico="/user.png"
+        />
+
+        <SidebarLink
+          setSidebar={setHeaderToggle}
+          name="More"
+          url="/dapp/more"
+          ico="/grid.png"
+        />
       </div>
       <div className="mt-auto lg:mt-20 w-full flex justify-start items-start flex-col gap-2">
         <div className="flex justify-between items-center w-full">
@@ -98,11 +119,12 @@ const Sidebar = ({ headerToggle, setHeaderToggle }) => {
 
 export default Sidebar;
 
-const SidebarLink = ({ name, ico, url, options }) => {
+const SidebarLink = ({ name, ico, url, options, setHeaderToggle }) => {
   const { pathname } = useLocation();
   return (
     <div className="flex w-full justify-start items-start flex-col">
       <Link
+        onClick={() => setHeaderToggle(false)}
         to={url}
         className={`${
           pathname.split("/")[2] === url.split("/")[2]
@@ -129,6 +151,7 @@ const SidebarLink = ({ name, ico, url, options }) => {
           {options.map((elem, idx) => {
             return (
               <Link
+                onClick={() => setHeaderToggle(false)}
                 key={idx + elem.name}
                 to={elem.url}
                 className={` relative flex justify-start items-center gap-4 w-full px-4 py-3`}

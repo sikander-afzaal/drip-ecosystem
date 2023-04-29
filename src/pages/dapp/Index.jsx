@@ -8,7 +8,7 @@ const Dapp = () => {
     <div className="mt-[60px] items-start grid grid-cols-1 lg:grid-cols-[360px__1fr] gap-x-8 xl:gap-x-[50px] w-[90%] mx-auto">
       <button
         onClick={() => setHeaderToggle(true)}
-        className="absolute text-neutral top-4 left-4"
+        className="absolute lg:hidden block text-neutral top-4 left-4"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

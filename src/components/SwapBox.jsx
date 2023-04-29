@@ -1,4 +1,4 @@
-const SwapBox = ({ widthFull }) => {
+const SwapBox = ({ widthFull, walletConnected }) => {
   return (
     <div
       className={`w-full ${
@@ -16,11 +16,13 @@ const SwapBox = ({ widthFull }) => {
           alt=""
         />
         <div className="flex justify-center items-center gap-3">
-          <img
-            src="/fire.png"
-            className="w-6 cursor-pointer object-contain"
-            alt=""
-          />
+          {!walletConnected && (
+            <img
+              src="/fire.png"
+              className="w-6 cursor-pointer object-contain"
+              alt=""
+            />
+          )}
           <img
             src="/swap-settings.png"
             className="w-6 cursor-pointer object-contain"
@@ -31,11 +33,13 @@ const SwapBox = ({ widthFull }) => {
             className="w-6 cursor-pointer object-contain"
             alt=""
           />
-          <img
-            src="/curve-arrow.png"
-            className="w-6 cursor-pointer object-contain"
-            alt=""
-          />
+          {!walletConnected && (
+            <img
+              src="/curve-arrow.png"
+              className="w-6 cursor-pointer object-contain"
+              alt=""
+            />
+          )}
         </div>
       </div>
       <div className="px-4 gap-3 flex justify-start items-start flex-col w-full">
@@ -96,15 +100,17 @@ const SwapBox = ({ widthFull }) => {
             </div>
           </div>
         </div>
-        <div className="flex mt-5 justify-between w-full items-center">
-          <p className="flex justify-start text-button items-center gap-3">
-            Slippage Tolerance{" "}
-            <img src="/pen.png" className="w-6 object-contain" alt="" />
-          </p>
-          <p className="text-button font-bold text-lg">0.5%</p>
-        </div>
+        {!walletConnected && (
+          <div className="flex mt-5 justify-between w-full items-center">
+            <p className="flex justify-start text-button items-center gap-3">
+              Slippage Tolerance{" "}
+              <img src="/pen.png" className="w-6 object-contain" alt="" />
+            </p>
+            <p className="text-button font-bold text-lg">0.5%</p>
+          </div>
+        )}
         <button className="w-full mt-1 h-[51px] shadow-blueShadow text-white text-lg font-bold hover:bg-transparent hover:text-button border-2 border-solid border-button transition-all duration-300 rounded-2xl bg-button ">
-          Connect Wallet
+          {!walletConnected ? "Connect Wallet" : "Select a token"}
         </button>
       </div>
     </div>
