@@ -31,7 +31,7 @@ const Sidebar = ({ headerToggle, setHeaderToggle }) => {
         <SidebarLink
           setSidebar={setHeaderToggle}
           name="Home"
-          url="/dapp/"
+          url="/dapp"
           ico="/home.png"
         />
 
