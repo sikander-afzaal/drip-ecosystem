@@ -16,6 +16,7 @@ export default {
         button: "#69B7E1",
         accentBlue: "#F0F7FF",
         lightGray: "#939AA4",
+        primaryDark: "#5DB2E0",
       },
       boxShadow: {
         blueShadow: "0px 4px 12px rgba(105, 183, 225, 0.5)",
