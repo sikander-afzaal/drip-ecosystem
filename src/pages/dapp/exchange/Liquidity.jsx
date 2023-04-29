@@ -1,6 +1,6 @@
 const Liquidity = () => {
   return (
-    <div className="wrapper mt-10">
+    <div className="wrapper lg:mt-10">
       <div className="flex justify-start items-center flex-col max-w-[1020px] w-full">
         <div className="flex flex-wrap justify-between items-center w-full gap-5">
           <div className="flex justify-start items-center gap-3">
