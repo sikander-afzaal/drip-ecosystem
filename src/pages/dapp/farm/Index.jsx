@@ -1,11 +1,15 @@
-import Banner from "./Banner";
+import Banner from "../../../components/Banner";
 import FilterBar from "./FilterBar";
 import FarmBigBox from "../../../components/FarmBigBox";
 
 const Farm = () => {
   return (
     <>
-      <Banner />
+      <Banner
+        img="/farm-cartoon.png"
+        title="DripFARM"
+        desc="Stake Liquidity Pool (LP) tokens to earn."
+      />
       <div className="w-full max-w-[1020px] flex justify-start items-start mx-auto flex-col">
         <div className="p-5 sm:p-[32px] sm:flex-row flex-col my-6 sm:w-auto w-full rounded-[40px] bg-bannerGr flex justify-center text-center sm:text-left items-center gap-8">
           <img
