@@ -26,6 +26,9 @@ export default {
       screens: {
         "1.5xl": "1670px",
       },
+      gridTemplateColumns: {
+        referralGrid: "repeat(auto-fit,minmax(400px,1fr))",
+      },
     },
   },
   plugins: [],

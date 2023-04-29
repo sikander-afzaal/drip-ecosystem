@@ -65,7 +65,7 @@ const Sidebar = ({ headerToggle, setHeaderToggle }) => {
         />
         <SidebarLink
           name="DripSTORE"
-          url="/dapp/store"
+          url="/dapp/store/nft"
           options={[
             {
               url: "/dapp/store/nft",
